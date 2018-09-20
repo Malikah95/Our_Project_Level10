@@ -1,0 +1,370 @@
+#: import sm kivy.uix.screenmanager
+
+<Manager>
+    transition: sm.FadeTransition()
+    LoginWindow:
+    Register:
+    Personal_Info
+    FirstScreen:
+    SecondScreen:
+
+<LoginWindow>:
+    name: 'Login'
+
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        height: "40dp" #
+        size_hint_y: None
+
+        FloatLayout:
+
+
+            Label:
+                text: "Login"
+                pos: 10, 1030
+                color: [0.0,0.0,0.0,0.4]
+                font_size: 60
+                #center_x: (root.width/2)
+                #top: (root.top/2) + 550
+                #center_y: root.top * 0.9
+            Label:
+                id: username_label
+                text: "Username"
+                color: (0,0,0,1)
+                font_size: 30
+                #right: username_input.x - 60
+                #center_y: root.top * 0.6
+                pos: 10, 900
+            TextInput:
+                id: username_input
+                background_color: [0.0,0.0,0.0,0.1]
+                #background_color: (0,0,0,0.1)
+                font_size: 20
+                #center_x: root.width * 0.5
+                #center_y: root.top * 0.6
+                #height: 50
+                #width: 350
+                size_hint: .9,.9 #width , hieght
+                pos: 40, 840
+            Label:
+                id: password_label
+                text: "Password"
+                color: (0,0,0,1)
+                font_size: 30
+                #right: password_input.x - 60
+                #center_y: root.top * 0.5
+                pos: 10, 740
+            TextInput:
+                id: password_input
+                background_color: [0.0,0.0,0.0,0.1]
+                #background_color: (1,1,1,0.1)
+                font_size: 20
+                password: True
+                #center_x: root.width * 0.5
+                #center_y: root.top * 0.5
+                #height: 50
+                #width: 350
+                size_hint: .9,.9 #width , hieght
+                pos: 40, 680
+
+            Button:
+                id: signup_label
+                text: "Register"
+                font_size: 20
+                #color: (0,0,0,1)
+                #font_size: 30
+                #center_y: root.top * 0.4
+                #center_x: root.top * 0.4
+                size: (90,35)
+                pos: 10, 500  #mean is x,y
+                size_hint: .4,.9 #width , hieght
+                background_color: [0.0,0.0,0.0,0.4]
+                on_release: app.root.current = 'register'
+
+            Button:
+                id: login_button
+                font_size: 20
+                #center_x: root.top * 0.3
+                #center_y: root.top * 0.4
+                text: "login"
+                size: (90,35)
+                pos: 400, 500  #mean is x,y
+                size_hint: .4,.9 #width , hieght
+                #on_press: root.login()
+                background_color: [0.0,0.0,0.0,0.4]
+                on_release: app.root.current = 'First'
+            Label:
+                id: success
+                # pos: (100,150)
+                color: [0.0,0.0,0.0,0.4]
+                text: "fail"
+                #center_x: root.top * 0.6
+                #center_y: root.top * 0.25
+                pos:10, 400
+
+
+<Register>:
+
+    name: 'register'
+
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        height: "40dp" #
+        size_hint_y: None
+
+        FloatLayout:
+
+            Label:  # text color po
+                id: username_register
+                text: "username"
+                color: 0,0,0,1
+                font_size: 30
+               # center_x: root.top * 0.1
+               # center_y: root.top * 0.9
+                pos: 10, 1030
+
+            TextInput:
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.8
+                #height: 50
+                #width: 350
+                size_hint: .9,.9 #width , hieght
+                pos: 40, 970
+
+
+            Label:
+                id: Email_register
+                text: "Email"
+                color: 0,0,0,1
+                font_size: 30
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.7
+                pos: 10, 880
+
+            TextInput:
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.8
+                #height: 50
+                #width: 350
+                size_hint: .9,.9 #width , hieght
+                pos: 40, 820
+
+            Label:
+                id: Pass_register
+                text: "Password"
+                color: 0,0,0,1
+                font_size: 30
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.7
+                pos: 10, 680
+
+            TextInput:
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.8
+                #height: 50
+                #width: 350
+                size_hint: .9,.9 #width , hieght
+                pos: 40, 630
+
+
+            Label:
+                id: Gender_register
+                text: "Gender"
+                color: 0,0,0,1
+                font_size: 30
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.7
+                pos: 10, 550
+
+            TextInput:
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.8
+                #height: 50
+                #width: 350
+                size_hint: .9,.9 #width , hieght
+                pos: 40, 500
+
+            Button:
+                #id: Register
+                text: "Register"
+                #size: (200,50)
+                size_hint: .9,.9 #width , hieght
+                pos:40 , 80
+                background_color: [0.0,0.0,0.0,0.4]
+                #on_release: app.root.current = 'other'
+                on_release: app.root.current = 'Personal_Info'
+
+                #on_press:
+                #root.Personal_Info()
+
+                    #root.manager.transition.duration = 1
+                    #root.manager.current = "second_page"
+<Personal_Info>:
+
+
+    name: 'Personal_Info'
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        height: "40dp" #
+        size_hint_y: None
+
+        FloatLayout:
+            Label:
+                id: AgeInfo
+                text: "Age"
+                color: 0,0,0,1
+                font_size: 30
+                #center_x: root.top * 0.1
+                #center_y: root.top * 0.9
+                pos: 10, 1030
+
+            TextInput:
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.8
+                #height: 50
+                #width: 350
+                size_hint: .9,.9 #width , hieght
+                pos: 40, 970
+
+
+            Label:
+                id: BloodPresure
+                text: "Blood Pressure"
+                color: 0,0,0,1
+                font_size: 30
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.7
+                pos: 10, 880
+
+            TextInput:
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.8
+                #height: 50
+                #width: 350
+                size_hint: .9,.9 #width , hieght
+                pos: 40, 820
+
+            Label:
+                id: Pass_register
+                text: "Password"
+                color: 0,0,0,1
+                font_size: 30
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.7
+                pos: 10, 680
+
+            TextInput:
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.8
+                #height: 50
+                #width: 350
+                size_hint: .9,.9 #width , hieght
+                pos: 40, 630
+
+
+            Label:
+                id: Gender_register
+                text: "Password"
+                color: 0,0,0,1
+                font_size: 30
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.7
+                pos: 10, 550
+
+            TextInput:
+                #center_x: root.top * 0.2
+                #center_y: root.top * 0.8
+                #height: 50
+                #width: 350
+                size_hint: .9,.9 #width , hieght
+                pos: 40, 500
+
+
+            Button:
+                text:"Submit"
+                size_hint: .9,.9 #width , hieght
+                pos:40 , 80
+                on_release: app.root.current = 'First'
+
+
+
+<FirstScreen>
+    name: 'First'
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        height: "40dp" #
+        size_hint_y: None
+
+        FloatLayout:
+
+            Label:
+                text: "Write The Symptoms :"
+                #size_hint_x: 1
+                color: 0,0,0,1
+                #center_x: (root.width/2)
+                #top: (root.top/2) + 700
+                pos: 1, 1060
+
+            TextInput:
+                id: username_input
+                text_hint:"write the symptoms"
+                color: 0,0,0,1
+                background_color: [0.0,0.0,0.0,0.1]
+                #background_color: (0,0,0,0.1)
+                font_size: 20
+                pos: 35, 1000
+                size_hint: .9,.9 #width , hieght
+
+            Button:
+                size_hint: .9,.9 #width , hieght
+                text: " Next "
+                pos:40 , 80
+                on_release: app.root.current = 'Second'
+
+
+<SecondScreen>
+    name: 'Second'
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        height: "40dp" #
+        size_hint_y: None
+        FloatLayout:
+
+            Label:
+                text: "Qustion About Your Sym to match with a disses"
+                pos: 1, 1060
+                color: 0,0,0,1
+            Button:
+                size_hint: .9,.9
+                pos:40 , 80
+                text: "Press Here!"
+                on_release: app.root.current = 'First'
