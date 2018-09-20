@@ -9,6 +9,18 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 
+
+mydb =mysql.connector.Connect(
+
+    host="localhost",
+    user="root",
+    password="root1234567",
+    database="user_inf"
+ )
+
+
+cur = mydb.cursor()
+
 Config.set('graphics', 'width',  350)
 Config.set('graphics', 'height', 600)
 
@@ -18,10 +30,71 @@ class Manager(ScreenManager):
     pass
 
 class LoginWindow(Screen):
-    pass
+
+        def Login_pressed(self):
+            username_text = self.username_input.text
+            password_text = self.password_input.text
+
+            cur.execute(
+                "SELECT username,pass FROM user WHERE username='" + username_text + "' AND pass ='" + password_text + "'")
+            count = cur.fetchone()
+
+            if count is None:
+
+                # Label
+                print("Enter a valid username and password")
+
+
+
+
+
+
+            else:
+                print("correct")
+                # will allow to access next page
+
+    class Loginapp(App):
+        def build(self):
+            self.load_kv('log.kv')
+            return Login()
 
 class Register(Screen):
-    pass
+    def register_pressed(self):
+        username_text = self.username_input.text
+        email_text = self.email_input.text
+        password_text = self.password_input.text
+
+        cur.execute("SELECT * FROM user WHERE username='" + username_text + "'")
+        count = cur.fetchone()
+
+        if count is not None:
+            print("Username is exists,please change...")
+
+        elif not username_text or not email_text or not password_text:
+
+            # need LABEL
+            print("must fill all blank.")
+
+
+
+        else:
+            cur.execute(
+                "INSERT INTO user (username, email, pass) VALUES('" + username_text + "' , '" + email_text + "', '" + password_text + "')"
+            )
+
+            mydb.commit()
+            cur.close()
+            mydb.close()
+
+
+class RegesApp(App):
+    def build(self):
+        self.load_kv('reges.kv')
+        return Regesration()
+
+
+RegesApp().run()
+
 
 class Personal_Info(Screen):
     pass

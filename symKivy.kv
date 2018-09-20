@@ -11,6 +11,10 @@
 <LoginWindow>:
     name: 'Login'
 
+    username_input: username_input
+    password_input: password_input
+
+
     canvas.before:
         Color:
             rgba: (1,1,1,1)
@@ -85,6 +89,8 @@
                 pos: 10, 500  #mean is x,y
                 size_hint: .4,.9 #width , hieght
                 background_color: [0.0,0.0,0.0,0.4]
+
+                #on_press: root.Login_pressed()#
                 on_release: app.root.current = 'register'
 
             Button:
@@ -110,6 +116,9 @@
 
 
 <Register>:
+    username_input: username_input
+    email_input: email_input
+    password_input: password_input
 
     name: 'register'
 
@@ -204,10 +213,13 @@
                 pos:40 , 80
                 background_color: [0.0,0.0,0.0,0.4]
                 #on_release: app.root.current = 'other'
+                #on_press: root.register_pressed()
+
                 on_release: app.root.current = 'Personal_Info'
 
                 #on_press:
                 #root.Personal_Info()
+
 
                     #root.manager.transition.duration = 1
                     #root.manager.current = "second_page"
