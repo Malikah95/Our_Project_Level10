@@ -205,13 +205,17 @@
 
                 on_release: app.root.current = 'Personal_Info'
 
-                #on_press:
-                #root.Personal_Info()
+                #on_press:root.Personal_Info()
 
 
                     #root.manager.transition.duration = 1
                     #root.manager.current = "second_page"
 <Personal_Info>:
+    age_input=age_input
+    Gender_input=Gender_input
+    BloodPresure_input=BloodPresure_input
+    Length_input=Length_input
+    weight_input=weight_input
 
 
     name: 'Personal_Info'
@@ -321,9 +325,14 @@
 
 
             Button:
+            personal_Info
                 text:"Register"
                 size_hint: .9,.9 #width , hieght
                 pos:40 , 80
+
+                # call function
+                on_press: root.personal_Info()
+
                 on_release: app.root.current = 'First'
 
 

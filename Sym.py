@@ -45,11 +45,6 @@ class LoginWindow(Screen):
                 # Label
                 print("Enter a valid username and password")
 
-
-
-
-
-
             else:
                 print("correct")
                 # will allow to access next page
@@ -98,7 +93,32 @@ RegesApp().run()
 
 
 class Personal_Info(Screen):
-    pass
+
+        def personal_Info(self):
+            age_input = self.age_input
+            Gender_input = self.Gender_input
+            BloodPresure_input = self.BloodPresure_input
+            Length_input = self.Length_input
+            weight_input = self.weight_input
+
+            cur.execute("SELECT age_input,Gender_input,BloodPresure_input,weight_input,Length_input  FROM user")
+
+            count = cur.fetchone()
+
+            if count is None:
+                cur.execute(
+                    "INSERT INTO user (Age,Gender,BloodPresure,Weight,Length )VALUES('" + age_input + "', '" + Gender_input + "', '" + BloodPresure_input + "',"
+                                                             " '" + weight_input + "', '" + Length_input + "')")
+                mydb.commit()
+                cur.close()
+                mydb.close()
+
+
+class personal_InfoApp(App):
+    def build(self):
+        self.load_kv('reges.kv')
+        return personal_Inf
+
 
 class FirstScreen(Screen):
     pass
