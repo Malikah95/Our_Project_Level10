@@ -47,9 +47,10 @@ class LoginWindow(Screen):
 
             else:
                 print("correct")
-                # will allow to access next page
 
-    class Loginapp(App):
+
+
+class Loginapp(App):
         def build(self):
             self.load_kv('log.kv')
             return Login()
