@@ -34,7 +34,7 @@ Builder.load_file("symkivy.kv")
 class Manager(ScreenManager):
     pass
 
-class LoginWindow(Widget):
+class LoginWindow(Screen):
 
 
         def Login_pressed(self):
@@ -61,9 +61,9 @@ class LoginWindow(Widget):
 class Loginapp(App):
         def build(self):
             self.load_kv('symkivy.kv')
-            return LoginWindow()
+            return Loginapp()
 
-class Register(Widget):
+class Register(Screen):
     def register_pressed(self):
         username_text = self.username_input.text
         email_text = self.email_input.text
@@ -101,10 +101,10 @@ class Register(Widget):
 class RegesApp(App):
     def build(self):
         self.load_kv('symkivy.kv')
-        return Register()
+        return RegesApp()
 
 
-RegesApp().run()
+#RegesApp().run()
 
 
 class Personal_Info(Screen):
@@ -132,7 +132,7 @@ class Personal_Info(Screen):
 class personal_InfoApp(App):
     def build(self):
         self.load_kv('symkivy.kv')
-        return personal_Inf
+        return personal_InfoApp
 
 
 class FirstScreen(Screen):
