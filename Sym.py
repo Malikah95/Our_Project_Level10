@@ -2,7 +2,7 @@ import kivy
 from kivy import Config
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
-kivy.require('1.10.0')
+kivy.require('1.11.0')
 from kivy.app import App
 from kivy.uix.screenmanager import Screen, ScreenManager, FadeTransition
 from kivy.uix.button import Button
@@ -18,13 +18,14 @@ from mysql.connector import MySQLConnection
 from kivy.uix.screenmanager import Screen
 
 mydb =mysql.connector.Connect(
-
     host="localhost",
     user="root",
     password="root1234567",
     database="user_inf"
  )
 cur = mydb.cursor()
+
+
 
 Config.set('graphics', 'width',  350)
 Config.set('graphics', 'height', 600)
@@ -35,8 +36,6 @@ class Manager(ScreenManager):
     pass
 
 class LoginWindow(Screen):
-
-
         def Login_pressed(self):
             username_text = self.username_input.text
             password_text = self.password_input.text
@@ -63,6 +62,8 @@ class Loginapp(App):
             self.load_kv('symkivy.kv')
             return Loginapp()
 
+
+
 class Register(Screen):
     def register_pressed(self):
         username_text = self.username_input.text
@@ -83,11 +84,6 @@ class Register(Screen):
 
         elif not username_text or not email_text or not password_text:
             popup2.open()
-
-
-
-
-
         else:
             cur.execute(
                 "INSERT INTO user (username, email, pass) VALUES('" + username_text + "' , '" + email_text + "', '" + password_text + "')"
@@ -104,6 +100,8 @@ class RegesApp(App):
         return RegesApp()
 
 
+
+
 #RegesApp().run()
 
 
@@ -116,7 +114,7 @@ class Personal_Info(Screen):
             length_input = self.length_input
             weight_input = self.weight_input
 
-            cur.execute("SELECT age_input,Gender_input,BloodPresure_input,weight_input,Length_input  FROM user")
+            cur.execute("SELECT Age,Gender,BloodPresure,Weight,Length  FROM user")
 
             count = cur.fetchone()
 
@@ -132,7 +130,9 @@ class Personal_Info(Screen):
 class personal_InfoApp(App):
     def build(self):
         self.load_kv('symkivy.kv')
-        return personal_InfoApp
+        return personal_InfoApp()
+
+
 
 
 class FirstScreen(Screen):
@@ -141,9 +141,9 @@ class FirstScreen(Screen):
 class SecondScreen(Screen):
     pass
 
-class ScreensApp(App):
+class Screensapp(App):
     def build(self):
         return Manager()
 
 if __name__ == '__main__':
-    ScreensApp().run()
+    Screensapp().run()
